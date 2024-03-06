@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotspot</title>
+    <script type="module" src="index.js"></script>
+    <style>
+      body {
+        margin: 0;
+        background: hsl(0 0% 8.5%);
+      }
+
+      .wrapper {
+        max-width: 720px;
+      }
+      @media (max-width: 720px) {
+        .wrapper {
+          padding-top: 40px;
+        }
+      }
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        min-height: 100vh;
+        margin: 0px auto;
+        overflow: hidden;
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-top: 120px;
+        padding-bottom: 120px;
+      }
+
+      .sizing {
+        box-sizing: border-box;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .animated-line {
+        flex: 1 1 0%;
+        position: relative;
+        box-sizing: border-box;
+      }
+
+      .animated-line::before {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        height: 1px;
+        width: 0px;
+        z-index: 3;
+        animation: 1s ease var(--d) 1 normal forwards running shine;
+      }
+
+      .animated-line::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        height: 1px;
+        width: 0px;
+        animation: 1s ease var(--d) 1 normal forwards running settle;
+      }
+
+      .link-wrapper {
+        margin-top: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: calc(100% + 32px);
+        position: relative;
+        overflow: hidden;
+        padding: 12px;
+        margin: -12px;
+        border-radius: 12px;
+        outline: 0;
+        color: inherit;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .link:hover {
+        background-color: hsl(0 0% 13.6%);
+      }
+
+      .link::selection {
+        background: #fff9a8;
+        color: black;
+      }
+
+      .project-title {
+        display: inline-block;
+        color: hsl(0 0% 93%);
+        font-weight: 500;
+        line-height: 28px;
+        font-size: 14px;
+        font-family: X, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+          "Helvetica Neue", sans-serif;
+        margin: 0;
+        animation: flip 0.2s calc(var(--i) * 0.05s);
+      }
+
+      .project-desc {
+        margin: 0;
+        margin-left: -8px;
+        display: inline-block;
+        color: hsl(0 0% 62.8%);
+        font-weight: 400;
+        line-height: 28px;
+        font-size: 14px;
+        font-family: X, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+          "Helvetica Neue", sans-serif;
+      }
+
+      @media (max-width: 720px) {
+        .project-desc {
+          display: none;
+        }
+      }
+
+      .project-date {
+        color: hsl(0 0% 43.9%);
+        font-weight: 400;
+        display: block;
+        margin: 0;
+        line-height: 28px;
+        font-size: 14px;
+        font-family: X, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+          "Helvetica Neue", sans-serif;
+      }
+
+      @keyframes shine {
+        0% {
+          background: transparent;
+        }
+
+        50% {
+          background: hsl(0 0% 49.4%);
+        }
+        100% {
+          width: 100%;
+          background: transparent;
+        }
+      }
+
+      @keyframes settle {
+        0% {
+          background: transparent;
+        }
+
+        50% {
+          background: hsl(0 0% 49.4%);
+        }
+        100% {
+          width: 100%;
+          background: hsl(0 0% 17.9%);
+        }
+      }
+
+      @keyframes flip {
+        20% {
+          content: "_";
+        }
+        40% {
+          content: var(--c1);
+        }
+        60% {
+          content: var(--c2);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrapper sizing">
+      <div class="link-wrapper">
+        <a class="link">
+          <span
+            class="project-title"
+            style="--i: 0; --c1: 'x'; --c2: '$'; --c3: '≈'"
+            >CodeGround</span
+          >
+          <span class="project-desc">An automated docs, node playground</span>
+          <div class="animated-line" style="--d: 0s"></div>
+          <div class="project-date">2023</div>
+        </a>
+        <a class="link">
+          <span
+            class="project-title"
+            style="--i: 1; --c1: 'x'; --c2: '$'; --c3: '≈'"
+            >CodeGround V2</span
+          >
+          <span class="project-desc">An automated docs, node playground</span>
+          <div class="animated-line" style="--d: 0.2s"></div>
+          <div class="project-date">2023</div>
+        </a>
+        <a class="link">
+          <span
+            class="project-title"
+            style="--i: 2; --c1: 'x'; --c2: '$'; --c3: '≈'"
+            >CodeGround Version 3</span
+          >
+          <span class="project-desc">An automated docs, node playground</span>
+          <div class="animated-line" style="--d: 0.4s"></div>
+          <div class="project-date">2023</div>
+        </a>
+      </div>
+    </main>
+  </body>
+</html>
